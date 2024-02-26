@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_print_unsigned.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/12/07 21:36:35 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/12/08 16:59:44 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "ft_printf.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+int	ft_print_unsigned(unsigned int nb, int fd)
+{
+	int				count;
 
+	count = 0;
+	if (fd < 0)
+		return (-1);
+	if (nb > 9)
+	{
+		count += ft_print_unsigned(nb / 10, fd);
+		count += ft_print_unsigned(nb % 10, fd);
+	}
+	if (nb >= 0 && nb <= 9)
+		count += ft_putchar_fd((nb + 48), fd);
+	return (count);
+}

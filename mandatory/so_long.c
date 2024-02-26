@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 20:29:41 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/24 21:26:31 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/02/25 18:28:05 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int main()
 {
-	just_print();
+	void *opened_window;
+
+	opened_window = open_window();
 }

@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/11/02 19:55:31 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/12/11 17:45:26 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "libft.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		len;
+	int		len2;
+	char	*arr;
 
+	if ((!s1 || !s2))
+		return (0);
+	len = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	arr = malloc(sizeof(char) * len + len2 + 1);
+	if (!arr)
+		return (0);
+	ft_memmove(arr, s1, len);
+	ft_memmove(arr + len, s2, len2);
+	*(arr + len + len2) = '\0';
+	return (arr);
+}

@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/10/31 18:20:36 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/12/16 10:16:35 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "libft.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+int	ft_isalpha(int c)
+{
+	if (c >= 65 && c <= 90)
+		return (1);
+	else if (c >= 97 && c <= 122)
+		return (1);
+	else
+		return (0);
+}
+
 

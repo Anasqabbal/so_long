@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   just_print.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/25 15:57:04 by anqabbal          #+#    #+#             */
+/*   Updated: 2024/02/25 16:49:29 by anqabbal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void just_print(void)
+void	just_print(void)
 {
-	printf("hello you can now start the project\n");
+	printf("you can start the WORKl\n");
 }

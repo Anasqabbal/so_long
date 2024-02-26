@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/11/01 17:54:48 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/11/25 10:03:59 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "libft.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
-
+int	ft_toupper(int c)
+{
+	if (c >= 97 && c <= 122)
+		c -= 32;
+	return (c);
+}

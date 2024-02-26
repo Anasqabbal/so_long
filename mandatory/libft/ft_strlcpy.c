@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/11/01 15:25:33 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/11/30 21:21:00 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "libft.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	srclen;
+	size_t	i;
 
+	i = 0;
+	srclen = ft_strlen(src);
+	if (dstsize == 0)
+		return (srclen);
+	while (*(src + i) && i < dstsize - 1)
+	{
+		*(dst + i) = *(src + i);
+		i++;
+	}
+	*(dst + i) = '\0';
+	if (srclen >= dstsize)
+		return (srclen);
+	return (srclen);
+}

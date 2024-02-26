@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/11/04 12:16:29 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/11/26 18:19:23 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "libft.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*arr;
+	int		len;
+	int		i;
 
+	if (!s || !f)
+		return (0);
+	len = ft_strlen(s);
+	arr = malloc(sizeof(char) * len + 1);
+	i = 0;
+	if (!arr)
+		return (0);
+	while (i < len)
+	{
+		arr[i] = f(i, s[i]);
+		i++;
+	}
+	*(arr + i) = '\0';
+	return (arr);
+}

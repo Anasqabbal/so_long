@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/11/01 18:31:39 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/12/05 09:56:57 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "libft.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
 
+	i = 0;
+	while (*(s + i))
+	{
+		if (*((char *)s + i) == (char)c)
+			return ((char *)s + i);
+		i++;
+	}
+	if (*((char *)s + i) == (char)c)
+		return ((char *)s + i);
+	return (NULL);
+}

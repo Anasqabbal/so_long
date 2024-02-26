@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/11/16 15:36:51 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/11/27 13:06:37 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "libft.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+t_list	*ft_lstlast(t_list *lst)
+{
+	int		res;
+	int		i;
+	t_list	*cur;
 
+	if (lst == NULL)
+		return (0);
+	cur = lst;
+	res = ft_lstsize(cur);
+	i = 0;
+	while (i < res - 1 && cur != NULL)
+	{
+		cur = cur->next;
+		i++;
+	}
+	return (cur);
+}

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/11/17 18:33:58 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/11/28 11:33:51 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "libft.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*temp;
+	t_list	*cur;
 
+	if (!lst || !del)
+		return ;
+	cur = *lst;
+	while (cur != NULL)
+	{
+		temp = cur;
+		del(cur->content);
+		cur = cur->next;
+		free(temp);
+	}
+	*lst = NULL;
+}

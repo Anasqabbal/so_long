@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/11/02 19:27:31 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/12/04 11:17:33 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "libft.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*arr;
 
+	if (!s)
+		return (0);
+	if (start >= ft_strlen(s) || len == 0)
+	{
+		arr = ft_calloc(1, sizeof(char));
+		return (arr);
+	}
+	if (len > (ft_strlen(s) - start))
+		len = ft_strlen(s) - start;
+	arr = ft_calloc(len + 1, sizeof(char));
+	if (!arr)
+		return (0);
+	ft_memcpy(arr, s + start, len);
+	return (arr);
+}

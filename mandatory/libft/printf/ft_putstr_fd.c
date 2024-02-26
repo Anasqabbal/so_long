@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/12/05 10:45:16 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/12/08 16:59:12 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "ft_printf.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+int	ft_putstr_fd(char *s, int fd)
+{
+	int	i;
 
+	i = 0;
+	if (fd < 0)
+		return (-1);
+	else if (!s)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (6);
+	}
+	while (*(s + i))
+	{
+		ft_putchar_fd(*(s + i), fd);
+		i++;
+	}
+	return (i);
+}

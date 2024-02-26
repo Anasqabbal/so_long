@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/11/02 08:18:22 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/12/05 09:57:28 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "libft.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
 
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (*(s1 + i) && *(s2 + i)
+		&& *((unsigned char *)s1 + i)
+		== *((unsigned char *)s2 + i) && i < n - 1)
+		i++;
+	return (*((unsigned char *)s1 + i) - *((unsigned char *)s2 + i));
+}

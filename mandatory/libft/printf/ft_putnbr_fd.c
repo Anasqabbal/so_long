@@ -1,20 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/12/05 10:47:55 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/12/08 16:58:53 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "ft_printf.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+int	ft_putnbr_fd(int n, int fd)
+{
+	unsigned int	nb;
+	int				count;
 
+	count = 0;
+	if (fd < 0)
+		return (-1);
+	nb = n;
+	if (n < 0)
+	{
+		count += ft_putchar_fd('-', fd);
+		nb = n * -1;
+	}
+	if (nb > 9)
+	{
+		count += ft_putnbr_fd(nb / 10, fd);
+		count += ft_putnbr_fd(nb % 10, fd);
+	}
+	if (nb >= 0 && nb <= 9)
+		count += ft_putchar_fd((nb + 48), fd);
+	return (count);
+}

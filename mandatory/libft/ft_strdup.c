@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/02/25 18:27:09 by anqabbal         ###   ########.fr       */
+/*   Created: 2023/11/02 19:17:14 by anqabbal          #+#    #+#             */
+/*   Updated: 2023/12/05 09:57:08 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "./libft/libft.h"
-#include <mlx.h>
+#include "libft.h"
 
-void	just_print(void);
-void	how_to_start(void);
-void	*open_window(void);
+char	*ft_strdup(const char *s1)
+{
+	int		len;
+	char	*arr;
 
+	len = ft_strlen(s1);
+	arr = malloc((len + 1) * (sizeof (char)));
+	if (!arr)
+		return (0);
+	ft_memcpy(arr, s1, len);
+	arr[len] = '\0';
+	return (arr);
+}
