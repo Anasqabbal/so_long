@@ -1,17 +1,16 @@
-NAME = mandatory
-FILES = just_print.c
-O_FILES = $(FILES:.c=.o)
+NAME = so_long
+MANDATORY = mandatory
+BONUS = bonus
 
-all : $(NAME)
+MANDATORY_PATH = ./mandatory/game_logic/
 
-$(NAME) : ./mandatory/$(O_FILES) ./mandatory/so_long.c
-	make -C ./mandatory
+all :
+	$(MAKE) -C $(MANDATORY_PATH)
 
 clean :
-	$(MAKE) -C ./mandatory $@
+	$(MAKE) -C $(MANDATORY_PATH) $@
 
 fclean :
-	$(MAKE) -C ./mandatory $@
+	$(MAKE) -C $(MANDATORY_PATH) $@
 
-re :
-	$(MAKE) -C ./mandatory $@
+re : fclean all
