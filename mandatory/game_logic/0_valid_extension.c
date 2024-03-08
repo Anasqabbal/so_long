@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 11:09:14 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/06 17:41:31 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:00:03 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,12 @@ static int	check_extention(char *map)
 int	check_map_name(int ac, char **av)
 {
 	if (ac == 1)
-		return (open_map("map1.ber"));
+		return (ft_printf("Error\nEnter map name\n"), OPEN_MAX + 1);
 	else
 	{
 		if (check_extention(av[1]))
 			return (open_map(av[1]));
 		else
-			return (OPEN_MAX + 1);
+			return (ft_printf("Error\nInvalide extension\n"), OPEN_MAX + 1);
 	}
 }

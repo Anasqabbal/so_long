@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:15:22 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/07 16:40:32 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/07 21:26:21 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*render_element(char *dst, t_win *var, int x, int y)
 
 	img = mlx_xpm_file_to_image(var->start_mlx, dst, &var->w, &var->h);
 	if (!img)
-		exit (999);
+		exit (1);
 	if (!(mlx_put_image_to_window(var->start_mlx, var->wind_mlx,
 		img, x * var->w, y * var->h)))
 			exit (1);

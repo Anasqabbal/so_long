@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 11:09:07 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/06 17:44:42 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/08 13:05:27 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int	check_valid_map(int fd, int ac, char **av, t_win *var)
 		return (ft_printf("Error\nInvalide map"), 0);
 	valid.line = check_valid_len(valid.f_len, check_map_name(ac, av));
 	if (!valid.line)
-		return (ft_printf("Error\nyour map is not rectangle\n"), 0);
+		return (ft_printf("Error\nyour map is not rectangular\n"), 0);
 	if (!check_all_walls(valid.f_len, valid.line, &valid))
 		return (ft_printf("Error\nInvalid Walls in your map\n"), 0);
 	if (!check_element(valid.f_len, valid.line, &valid))

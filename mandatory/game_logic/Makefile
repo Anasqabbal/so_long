@@ -3,11 +3,12 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 FILES =  so_long.c 0_valid_extension.c 1_valid_map.c\
 		 1_valid_map1.c 2_open_start_window.c 2_0_render_the_map.c\
-		 2_1_do_moves.c
+		 2_1_do_moves.c ft_exit.c
 O_FILES = $(FILES:.c=.o)
 INCLUDES = -I/opt/X11/include -Imlx
 MLX_FLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
 LIBFT_PATH = ./libft/libft.a
+
 
 all : lib $(NAME)
 
