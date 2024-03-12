@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/24 20:29:41 by anqabbal          #+#    #+#             */
+/*   Updated: 2024/03/10 15:56:43 by anqabbal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long.h"
+
+int	main(int ac, char **av)
+{
+	int		fd;
+	t_win	var;
+
+	if (ac != 2)
+		exit (1);
+	fd = check_map_name(ac, av);
+	if (fd > OPEN_MAX)
+		exit (1);
+	if (!check_valid_map(fd, ac, av, &var))
+		exit (1);
+	start_the_game(ac, av, &var);
+	close (fd);
+	return (0);
+}
