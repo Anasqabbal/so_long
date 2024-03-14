@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:15:22 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/11 10:40:43 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/14 14:02:10 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_exit(t_win *v, int indice)
 {
+	mlx_destroy_window(v->start_mlx, v->wind_mlx);
 	split_free(v->line, v->f_len);
 	exit (indice);
 }
@@ -30,28 +31,6 @@ void	*render_element(char *dst, t_win *var, int x, int y)
 	return (img);
 }
 
-static void	render_the_row2(char *res, t_win *var, int y, int i)
-{
-	if (res[i] == 'E')
-	{
-		var->exit = render_element("./textures/Exit.xpm", var, i, y);
-		if (!var->exit)
-			ft_exit(var, 1);
-	}
-	else if (res[i] == 'C')
-	{
-		var->coin = render_element("./textures/coin_rotate_0.xpm", var, i, y);
-		if (!var->coin)
-			ft_exit(var, 1);
-	}
-	else if (res [i] == 'P')
-	{
-		var->player = render_element("./textures/Character.xpm", var, i, y);
-		if (!var->player)
-			ft_exit(var, 1);
-	}
-}
-
 static void	render_the_row(char *res, t_win *var, int y)
 {
 	int	i;
@@ -59,21 +38,20 @@ static void	render_the_row(char *res, t_win *var, int y)
 	i = 0;
 	while (res[i] || res[i] == '\n')
 	{
-		if (!render_element("./textures/Stones.xpm", var, i, y))
-			ft_exit(var, 1);
+		render_element("./textures/Stones.xpm", var, i, y);
 		if (res[i] == '1')
-		{
 			var->wall = render_element("./textures/Wall.xpm", var, i, y);
-			if (!var->wall)
-				ft_exit(var, 1);
-		}
 		else if (res[i] == '0')
-		{
 			var->floor = render_element("./textures/Stones.xpm", var, i, y);
-			if (!var->floor)
-				ft_exit(var, 1);
-		}
-		render_the_row2(res, var, y, i);
+		else if (res[i] == 'E')
+			var->exit = render_element("./textures/Exit.xpm", var, i, y);
+		else if (res[i] == 'C')
+			var->coin = render_element("./textures/coin_rotate_0.xpm",
+					var, i, y);
+		else if (res [i] == 'P')
+			var->player = render_element("./textures/Character.xpm", var, i, y);
+		else if (res [i] == 'M')
+			render_element("./textures/fire_idle_0.xpm", var, i, y);
 		i++;
 	}
 }

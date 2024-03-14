@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/11 11:18:17 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/12 11:19:59 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ typedef struct s_win
 	int		cy;
 }	t_win;
 
-
 typedef struct s_position
 {
 	int	i;
@@ -78,4 +77,3 @@ void	ft_text(t_win *s, int indice);
 int		render_enemies(t_win *v);
 int		render_coins(t_win *v);
 #endif
-

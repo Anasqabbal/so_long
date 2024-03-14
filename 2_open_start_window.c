@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 11:09:57 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/11 14:13:53 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/14 15:56:05 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ void	sl_open_window(t_win	*var)
 	var->wind_mlx = mlx_new_window(var->start_mlx,
 			len * x, var->f_len * y, "./so_long");
 	if (!var->wind_mlx)
+	{
+		split_free(var->line, var->f_len);
 		exit (1);
+	}
 }
 
 int	with_keys(int key, t_win *var)
@@ -62,9 +65,9 @@ int	with_keys(int key, t_win *var)
 	if (key == 53 || key == 12)
 		ft_exit(var, 0);
 	else if (key == 124 || key == 2)
-		left_move(var);
-	else if (key == 123 || key == 0)
 		right_move(var);
+	else if (key == 123 || key == 0)
+		left_move(var);
 	else if (key == 126 || key == 13)
 		up_move(var);
 	else if (key == 125 || key == 1)
@@ -72,9 +75,14 @@ int	with_keys(int key, t_win *var)
 	return (1);
 }
 
-int	destroy(void)
+int	destroy(int key, t_win *var)
 {
+	split_free(var->line, var->f_len);
+	printf("finished the toch");
 	exit (0);
+	(void) var;
+	//mlx_destroy_window(var->start_mlx, var->wind_mlx);
+	(void) key;
 	return (0);
 }
 

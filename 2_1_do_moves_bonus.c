@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:45:23 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/10 15:01:17 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/14 14:22:33 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	apply_moves(t_win *v, t_position *p, int indice)
 		implement_the_move(v, &p1, p);
 }
 
-void	left_move(t_win *v)
+void	right_move(t_win *v)
 {
 	t_position	p;
 
@@ -61,7 +61,7 @@ void	left_move(t_win *v)
 		apply_moves(v, &p, 'L');
 }
 
-void	right_move(t_win *v)
+void	left_move(t_win *v)
 {
 	t_position	p;
 
@@ -77,7 +77,7 @@ void	right_move(t_win *v)
 	{
 		ft_text(v, 1);
 		ft_printf("You lose");
-		exit (0);
+		ft_exit(v, 0);
 	}
 	if (v->line[p.y][p.i - 1] != '1')
 		apply_moves(v, &p, 'R');
@@ -99,7 +99,7 @@ void	up_move(t_win *v)
 	{
 		ft_text(v, 1);
 		ft_printf("You lose");
-		exit (0);
+		ft_exit(v, 0);
 	}
 	if (v->line[p.y - 1][p.i] != '1')
 		apply_moves(v, &p, 'U');
@@ -121,7 +121,7 @@ void	down_move(t_win *v)
 	{
 		ft_text(v, 1);
 		ft_printf("You lose");
-		exit (0);
+		ft_exit(v, 0);
 	}
 	if (v->line[p.y + 1][p.i] != '1')
 		apply_moves(v, &p, 'D');

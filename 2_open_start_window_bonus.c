@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 11:09:57 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/11 14:14:10 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/14 14:22:47 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ int	with_keys(int key, t_win *var)
 	if (key == 53 || key == 12)
 		ft_exit(var, 0);
 	else if (key == 124 || key == 2)
-		left_move(var);
-	else if (key == 123 || key == 0)
 		right_move(var);
+	else if (key == 123 || key == 0)
+		left_move(var);
 	else if (key == 126 || key == 13)
 		up_move(var);
 	else if (key == 125 || key == 1)
@@ -72,8 +72,11 @@ int	with_keys(int key, t_win *var)
 	return (1);
 }
 
-int	destroy(void)
+int	destroy(int key, t_win *var)
 {
+	(void) key;
+	split_free(var->line, var->f_len);
+	mlx_destroy_window(var->start_mlx, var->wind_mlx);
 	exit (0);
 	return (0);
 }
