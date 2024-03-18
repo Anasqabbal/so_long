@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 11:09:07 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/10 14:15:37 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:19:42 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	**check_valid_len(int f_len, int fd)
 	size_t	len;
 
 	i = -1;
-	res = malloc(sizeof(char *) * f_len + 1);
+	res = ft_calloc(sizeof(char *), f_len + 1);
 	if (!res)
 		return (close(fd), NULL);
 	while (++i <= f_len)
@@ -30,12 +30,12 @@ static char	**check_valid_len(int f_len, int fd)
 		if (i == 0)
 			len = ft_strlen(res[i]);
 		else if (i && len != ft_strlen(res[i]))
-			return (close(fd), split_free(res, i));
+			return (close(fd), split_free(res, i + 1));
 	}
 	if (res[i] && len != ft_strlen(res[i]) + 1)
-		return (close(fd), split_free(res, i));
+		return (close(fd), split_free(res, i + 1));
 	else if (!res[i])
-		return (close(fd), split_free(res, i));
+		return (close(fd), split_free(res, i + 1));
 	return (close (fd), res);
 }
 

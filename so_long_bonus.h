@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/12 11:19:59 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:53:33 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ typedef struct s_win
 	void	*floor;
 	void	*exit;
 	int		count;
-	t_valid	*ui;
 	int		i;
 	int		y;
 	int		color;
 	int		ci;
 	int		cy;
+	int		fd;
 }	t_win;
 
 typedef struct s_position
@@ -73,6 +73,7 @@ void	up_move(t_win *var);
 void	left_move(t_win *var);
 void	right_move(t_win *var);
 void	ft_exit(t_win *v, int indice);
+void	valid_images_bonus(t_win *v);
 void	ft_text(t_win *s, int indice);
 int		render_enemies(t_win *v);
 int		render_coins(t_win *v);

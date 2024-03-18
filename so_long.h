@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 20:30:19 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/12 09:17:13 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:57:53 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_win
 	int		count;
 	int		i;
 	int		y;
+	int		fd;
 }	t_win;
 
 typedef struct s_valid
@@ -67,5 +68,4 @@ void	up_move(t_win *var);
 void	left_move(t_win *var);
 void	right_move(t_win *var);
 void	ft_exit(t_win *v, int indice);
-void	ft_clear(t_win *v, int indice);
 #endif

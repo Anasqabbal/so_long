@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 10:35:02 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/11 12:00:21 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:37:24 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*get_a(int nb, char **nb11)
 	nb1 = ft_itoa(nb);
 	if (!nb1)
 		return (NULL);
-	str = ft_strjoin("./textures/coin_rotate_", nb1);
+	str = ft_strjoin("./coin_rotate_", nb1);
 	if (!str)
 		return (NULL);
 	str1 = ft_strjoin(str, ".xpm");
@@ -47,7 +47,7 @@ static int	draw_animation(t_position *en1, t_win *v, int count, int k)
 			{
 				if (!get_a(i, &nb))
 					return (free(en1), 0);
-				if (!(render_element("./textures/Stones.xpm", v,
+				if (!(render_element("./Stones.xpm", v,
 							en1[k].i, en1[k].y)))
 					return (free(en1), 0);
 				if (!(render_element(nb, v, en1[k].i, en1[k].y)))

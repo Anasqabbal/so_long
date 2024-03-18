@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 11:09:14 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/12 11:16:27 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:34:16 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	the_file_len(int fd, t_valid *valid)
 		free(res);
 	}
 	if (len == 0)
-		return (close(fd), ft_printf("Error\nyour file is empty"), 0);
+		return (close(fd), 0);
 	close(fd);
 	valid->f_len = i;
 	return (i);
@@ -45,7 +45,7 @@ int	open_map(char *res)
 	char	*res1;
 	int		fd;
 
-	res1 = ft_strjoin("./maps/", res);
+	res1 = ft_strjoin("./", res);
 	fd = open(res1, O_RDONLY);
 	if (fd < 0)
 	{

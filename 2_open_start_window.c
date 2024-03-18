@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 11:09:57 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/14 15:56:05 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:36:49 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,17 @@ void	sl_open_window(t_win	*var)
 
 	var->start_mlx = mlx_init();
 	if (!var->start_mlx)
+	{
+		split_free(var->line, var->f_len);
 		exit (1);
+	}
 	len = ft_strlen(var->line[0]) - 1;
-	if (!(mlx_xpm_file_to_image(var->start_mlx, "./textures/Wall.xpm", &x, &y)))
-		ft_exit(var, 1);
+	if (!(mlx_xpm_file_to_image(var->start_mlx,
+				"./Wall.xpm", &x, &y)))
+	{
+		split_free(var->line, var->f_len);
+		exit (1);
+	}
 	var->wind_mlx = mlx_new_window(var->start_mlx,
 			len * x, var->f_len * y, "./so_long");
 	if (!var->wind_mlx)
@@ -59,7 +66,7 @@ int	with_keys(int key, t_win *var)
 {
 	if (check_e_c(var->f_len, var->line, 'C'))
 	{
-		if (!(render_element("./textures/Openexit.xpm", var, var->i, var->y)))
+		if (!(render_element("./Openexit.xpm", var, var->i, var->y)))
 			ft_exit(var, 1);
 	}
 	if (key == 53 || key == 12)
@@ -75,14 +82,12 @@ int	with_keys(int key, t_win *var)
 	return (1);
 }
 
-int	destroy(int key, t_win *var)
+int	destroy(t_win *var)
 {
+	close(var->fd);
+	mlx_destroy_window(var->start_mlx, var->wind_mlx);
 	split_free(var->line, var->f_len);
-	printf("finished the toch");
 	exit (0);
-	(void) var;
-	//mlx_destroy_window(var->start_mlx, var->wind_mlx);
-	(void) key;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 20:29:41 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/14 14:22:09 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/17 12:12:48 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,5 @@ int	main(int ac, char **av)
 	if (!check_valid_map(fd, ac, av, &var))
 		exit (1);
 	start_the_game(ac, av, &var);
-	close (fd);
 	return (0);
 }

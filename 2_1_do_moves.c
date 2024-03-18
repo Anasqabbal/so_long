@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:45:23 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/14 14:21:20 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/16 11:44:42 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	right_move(t_win *v)
 	if ((v->line[p.y][p.i + 1] == 'E' || v->line[p.y][p.i] == 'E')
 		&& check_e_c(v->f_len, v->line, 'C'))
 	{
+		ft_printf("Move %d\n", ++v->count);
 		ft_printf("You win");
 		ft_exit(v, 0);
 	}
@@ -62,6 +63,7 @@ void	left_move(t_win *v)
 	if ((v->line[p.y][p.i - 1] == 'E' || v->line[p.y][p.i] == 'E')
 		&& check_e_c(v->f_len, v->line, 'C'))
 	{
+		ft_printf("Move %d\n", ++v->count);
 		ft_printf("You win");
 		ft_exit(v, 0);
 	}
@@ -77,6 +79,7 @@ void	up_move(t_win *v)
 	if ((v->line[p.y - 1][p.i] == 'E' || v->line[p.y][p.i] == 'E')
 		&& check_e_c(v->f_len, v->line, 'C'))
 	{
+		ft_printf("Move %d\n", ++v->count);
 		ft_printf("You win");
 		ft_exit(v, 0);
 	}
@@ -92,6 +95,7 @@ void	down_move(t_win *v)
 	if ((v->line[p.y + 1][p.i] == 'E' || v->line[p.y][p.i] == 'E')
 		&& check_e_c(v->f_len, v->line, 'C'))
 	{
+		ft_printf("Move %d\n", ++v->count);
 		ft_printf("You win");
 		ft_exit(v, 0);
 	}

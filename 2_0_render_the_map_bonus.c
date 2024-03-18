@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:15:22 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/14 14:02:10 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:35:24 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_exit(t_win *v, int indice)
 {
+	close(v->fd);
 	mlx_destroy_window(v->start_mlx, v->wind_mlx);
 	split_free(v->line, v->f_len);
 	exit (indice);
@@ -31,27 +32,31 @@ void	*render_element(char *dst, t_win *var, int x, int y)
 	return (img);
 }
 
-static void	render_the_row(char *res, t_win *var, int y)
+static void	render_the_row(char *res, t_win *v, int y)
 {
 	int	i;
 
 	i = 0;
 	while (res[i] || res[i] == '\n')
 	{
-		render_element("./textures/Stones.xpm", var, i, y);
+		render_element("./Stones.xpm", v, i, y);
 		if (res[i] == '1')
-			var->wall = render_element("./textures/Wall.xpm", var, i, y);
+			v->wall = render_element("./Wall.xpm", v, i, y);
 		else if (res[i] == '0')
-			var->floor = render_element("./textures/Stones.xpm", var, i, y);
+			v->floor = render_element("./Stones.xpm", v, i, y);
 		else if (res[i] == 'E')
-			var->exit = render_element("./textures/Exit.xpm", var, i, y);
+			v->exit = render_element("./Exit.xpm", v, i, y);
 		else if (res[i] == 'C')
-			var->coin = render_element("./textures/coin_rotate_0.xpm",
-					var, i, y);
+			v->coin = render_element("./coin_rotate_0.xpm",
+					v, i, y);
 		else if (res [i] == 'P')
-			var->player = render_element("./textures/Character.xpm", var, i, y);
+			v->player = render_element("./Character.xpm",
+					v, i, y);
 		else if (res [i] == 'M')
-			render_element("./textures/fire_idle_0.xpm", var, i, y);
+			render_element("./fire_idle_0.xpm", v, i, y);
+		else if (!mlx_xpm_file_to_image(v->start_mlx,
+				"./Openexit.xpm", &v->w, &v->h))
+			ft_exit(v, 1);
 		i++;
 	}
 }
@@ -62,6 +67,7 @@ void	render_the_map(int fd, t_win *var)
 	int		y;
 
 	y = 0;
+	var->fd = fd;
 	var->floor = NULL;
 	var->wall = NULL;
 	var->player = NULL;

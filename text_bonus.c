@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 19:23:38 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/10 15:55:41 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:43:23 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_text(t_win *v, int indice)
 		++v->count;
 		res = ft_itoa(v->count);
 		if (!res)
-			ft_exit(v, 7790);
+			ft_exit(v, 1);
 		mlx_put_image_to_window(v->start_mlx, v->wind_mlx,
 			v->wall, 1 * v->w, (v->f_len - 1) * v->h);
 		mlx_string_put(v->start_mlx, v->wind_mlx, v->ci, v->cy, v->color, res);

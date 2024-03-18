@@ -6,7 +6,7 @@
 /*   By: anqabbal <anqabbal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 11:09:57 by anqabbal          #+#    #+#             */
-/*   Updated: 2024/03/14 14:22:47 by anqabbal         ###   ########.fr       */
+/*   Updated: 2024/03/18 10:36:17 by anqabbal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,32 @@ void	sl_open_window(t_win	*var)
 
 	var->start_mlx = mlx_init();
 	if (!var->start_mlx)
+	{
+		split_free(var->line, var->f_len);
 		exit (1);
+	}
 	len = ft_strlen(var->line[0]) - 1;
-	if (!(mlx_xpm_file_to_image(var->start_mlx, "./textures/Wall.xpm", &x, &y)))
-		ft_exit(var, 1);
+	if (!(mlx_xpm_file_to_image(var->start_mlx,
+				"./Wall.xpm", &x, &y)))
+	{
+		split_free(var->line, var->f_len);
+		exit (1);
+	}
 	var->wind_mlx = mlx_new_window(var->start_mlx,
 			len * x, var->f_len * y, "./so_long");
 	if (!var->wind_mlx)
+	{
+		split_free(var->line, var->f_len);
 		exit (1);
+	}
 }
 
 int	with_keys(int key, t_win *var)
 {
 	if (check_e_c(var->f_len, var->line, 'C'))
 	{
-		if (!(render_element("./textures/Openexit.xpm", var, var->i, var->y)))
+		if (!(render_element("./Openexit.xpm",
+					var, var->i, var->y)))
 			ft_exit(var, 1);
 	}
 	if (key == 53 || key == 12)
@@ -72,9 +83,9 @@ int	with_keys(int key, t_win *var)
 	return (1);
 }
 
-int	destroy(int key, t_win *var)
+int	destroy(t_win *var)
 {
-	(void) key;
+	close(var->fd);
 	split_free(var->line, var->f_len);
 	mlx_destroy_window(var->start_mlx, var->wind_mlx);
 	exit (0);
@@ -86,12 +97,15 @@ void	start_the_game(int ac, char **av, t_win *v)
 	t_position	e;
 
 	sl_open_window(v);
+	valid_images_bonus(v);
 	render_the_map(check_map_name(ac, av), v);
 	v->count = 0;
 	get_position(v->f_len, v->line, &e, 'E');
 	v->i = e.i;
 	v->y = e.y;
 	ft_text(v, 0);
+	mlx_string_put(v->start_mlx, v->wind_mlx, (1 * v->w) + 10,
+		(v->f_len - 1) * v->h + 30, 0xE32800, "0");
 	mlx_hook(v->wind_mlx, 2, 0, with_keys, v);
 	mlx_loop_hook(v->start_mlx, render_enemies, v);
 	mlx_hook(v->wind_mlx, 17, 0, destroy, v);
